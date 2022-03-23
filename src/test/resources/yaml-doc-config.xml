@@ -1,0 +1,8 @@
+<yaml-doc-config>
+
+	<openapi id="sample"
+		inputYaml="src/test/resources/sample/sample.yaml"
+		outputFile="target/sample.pdf"
+		/>	
+
+</yaml-doc-config>

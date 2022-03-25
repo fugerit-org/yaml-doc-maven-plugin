@@ -5,7 +5,7 @@
 	<groupId>org.fugerit.java</groupId>
 	<artifactId>yaml-doc-maven-plugin</artifactId>
 
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>yaml-doc-maven-plugin</name>
@@ -22,10 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<!-- libraries versions -->
-		<fj-version>0.7.6.8</fj-version>
-		<fj-doc-version>0.3.9.2</fj-doc-version>
-		<snake-yaml-version>1.30</snake-yaml-version>
 	</properties>
 
 	<licenses>

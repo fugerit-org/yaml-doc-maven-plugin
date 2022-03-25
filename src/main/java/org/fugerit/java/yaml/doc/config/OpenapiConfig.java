@@ -16,6 +16,8 @@ public class OpenapiConfig extends BasicIdConfigType {
 	private String language;
 	
 	private String labelsOverride;
+	
+	private String excelTryAutoresize;
 
 	public String getInputYaml() {
 		return inputYaml;
@@ -47,6 +49,14 @@ public class OpenapiConfig extends BasicIdConfigType {
 
 	public void setLabelsOverride(String labelsOverride) {
 		this.labelsOverride = labelsOverride;
+	}
+
+	public String getExcelTryAutoresize() {
+		return excelTryAutoresize;
+	}
+
+	public void setExcelTryAutoresize(String excelTryAutoresize) {
+		this.excelTryAutoresize = excelTryAutoresize;
 	}
 	
 }

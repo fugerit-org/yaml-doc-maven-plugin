@@ -12,7 +12,7 @@ import org.fugerit.java.core.lang.helpers.StringUtils;
 import org.fugerit.java.core.util.collection.ListMapStringKey;
 import org.fugerit.java.yaml.doc.YamlDocMain;
 import org.fugerit.java.yaml.doc.config.OpenapiConfig;
-import org.fugerit.java.yaml.doc.config.YamlDocConfig;
+import org.fugerit.java.yaml.doc.config.YamlDocCatalog;
 
 @Mojo( name = "generate")
 public class MojoGenerate extends AbstractMojo {
@@ -34,8 +34,8 @@ public class MojoGenerate extends AbstractMojo {
         try {
         	FileInputStream fis = new FileInputStream( new File( this.configPath ) );
         	try {
-        		YamlDocConfig config = new YamlDocConfig();
-        		config = (YamlDocConfig)YamlDocConfig.load( fis , config );
+        		YamlDocCatalog config = new YamlDocCatalog();
+        		config = (YamlDocCatalog)YamlDocCatalog.load( fis , config );
         		this.getLog().info( "keys : "+config.getIdSet() );
         		ListMapStringKey<OpenapiConfig> catalog = config.getListMap( this.idCatalog );
         		for ( OpenapiConfig current : catalog ) {
@@ -44,6 +44,7 @@ public class MojoGenerate extends AbstractMojo {
                 	this.addIfNotEmpty(props, YamlDocMain.ARG_OUTPUT_FILE, current.getOutputFile() );
                 	this.addIfNotEmpty(props, YamlDocMain.ARG_LANGUAGE, current.getLanguage() );
                 	this.addIfNotEmpty(props, YamlDocMain.ARG_LABEL_OVVERRIDE, current.getLabelsOverride() );
+                	this.addIfNotEmpty(props, YamlDocMain.ARG_EXCEL_TRY_AUTORESIZE, current.getExcelTryAutoresize() );
                 	getLog().info( "using parameters -> "+props );
                 	YamlDocMain.worker( props );
         		}

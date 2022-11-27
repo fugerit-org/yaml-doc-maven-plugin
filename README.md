@@ -1,24 +1,29 @@
-# yaml-doc-tool
+# yaml-doc-maven-plugin
 
-Tool for auto documentation of yaml / openapi
+Simple maven plugin for [yaml-doc-tool](https://github.com/fugerit-org/yaml-doc-tool) project.
 
-**Usage:**  
+Accepted config params are :  
+* configPath
+* idCatalog
 
-java -jar dist-yaml-doc-tool-X.X.X.jar --input-yaml [path-to-openapi]\
-										--output-file [output-file]\
-										--language [language]\
-										--labels-override [path-to-labels-properties]
-										
-**example :**  
+Here a sample configuration  :
 
-java -jar dist-yaml-doc-tool-0.1.0.jar --input-yaml sample.yaml --output-file sample.pdf --language it
-
-**output-file**   
-currently supported extensions : pdf, xlsx, xml
-
-**language**  
-currently supported languages : it, en
-
-**labels-overrides**   
-path to alternate labels properties
-currently supported labels are available in : src/main/resources/lang/label.properties
+```
+			<plugin>
+				<groupId>org.fugerit.java</groupId>
+				<artifactId>yaml-doc-maven-plugin</artifactId>
+				<version>${yaml-doc-version}</version>	
+				<configuration>
+					<configPath>src/config/yaml-doc-config.xml</configPath>
+					<idCatalog>openapi</idCatalog>		
+				</configuration>							
+				<executions>
+					<execution>
+						<id>openapi</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>		
+				</executions>
+			</plugin>	
+```

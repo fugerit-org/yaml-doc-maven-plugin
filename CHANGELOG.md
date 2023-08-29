@@ -3,6 +3,7 @@
 * Changed yaml-doc-tool version to 0.4.0
 * Updated fj-bom to 1.2.5
 * Added sonar cloud analysis
+* Added maven repo central and sonar cloud quality gate badges
 
 0.3.2 (2022-12-01)
 ------------------

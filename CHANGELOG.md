@@ -1,3 +1,7 @@
+0.4.2 (2023-08-29)
+------------------
+* Changed yaml-doc-tool version to 0.4.2
+
 0.4.0 (2023-08-29)
 ------------------
 * Changed yaml-doc-tool version to 0.4.0

@@ -11,12 +11,12 @@
 		<relativePath></relativePath>
 	</parent>
 
-	<version>0.4.0</version>
+	<version>0.4.2</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>yaml-doc-maven-plugin</name>
-	<description>Tool export query in CSV (and in the furutre other) formats</description>
-	<url>http://www.fugerit.org/java/</url>
+	<description>Simple maven plugin for the yaml-doc-tool project</description>
+	<url>http://www.fugerit.org/</url>
 
 	<scm>
 		<connection>scm:git:git://github.com/fugerit-org/yaml-doc-maven-plugin.git</connection>

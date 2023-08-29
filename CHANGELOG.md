@@ -1,3 +1,9 @@
+0.4.0 (2023-08-29)
+------------------
+* Changed yaml-doc-tool version to 0.4.0
+* Updated fj-bom to 1.2.5
+* Added sonar cloud analysis
+
 0.3.2 (2022-12-01)
 ------------------
 * Changed yaml-doc-tool version to 0.3.2

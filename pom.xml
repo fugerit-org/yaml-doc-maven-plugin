@@ -7,11 +7,11 @@
 	<parent>
 		<groupId>org.fugerit.java</groupId>
 		<artifactId>fj-bom</artifactId>
-		<version>1.2.5</version>
+		<version>1.4.0</version>
 		<relativePath></relativePath>
 	</parent>
 
-	<version>0.4.2</version>
+	<version>0.5.0</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>yaml-doc-maven-plugin</name>
@@ -28,7 +28,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<yaml-doc-version>${project.version}</yaml-doc-version>
+		<yaml-doc-version>0.5.0</yaml-doc-version>
 	    <!-- sonar cloud configuration -->
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.organization>fugerit-org</sonar.organization>

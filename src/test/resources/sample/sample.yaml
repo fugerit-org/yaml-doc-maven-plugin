@@ -1,660 +1,83 @@
 openapi: 3.0.0
 info:
-  title: Data model per atto
-  version: '1.0.0 beta'
+  title: 'Sample Openapi Document 01'
+  description: 'This is a sample yaml for yaml-doc-tool'
+  version: '1.0.1'
+servers:
+  - url: http://localhost:8080/api
+    description: Sample Development server
 paths:
-  "/":
+  /sample/id/{id}:
     get:
-      description: Metodo vuoto solo per tacitare lo swagger editor
+      summary: Sample
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string                  
       responses:
-        "200":
-          description: ok
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/SampleResult'                  
 components:
   schemas:
-    ModelAtto:
-      properties:
-        startRoute: 
-          type: string
-          description: URI di base per la registrazione evento
-          example: '/atto/registrazione/estremiRiconoscimento'   
-        composizione:
-          description: Composizione dinamica dell'evento
-          $ref: '#/components/schemas/SectionConfig'
-        id: 
-          type: string
-          description: Id univoco assegnato dal sistema. (per uso interno)
-          example: '9423'
-        idTipoEvento: 
-          type: string
-          description: Id del tipo evento.
-          example: 5
-        idUsecase: 
-          type: string
-          description: Id del caso d'uso cui si riferisce l'evento.
-          example: 1170
-        descrizioneCasoUso: 
-          type: string
-          description: Descrizione del caso d'uso cui si riferisce l'evento.
-          example: 'Morte su dichiarazione del cittadino'
-        idansc: 
-          type: string
-          description: Id Nazionale univoco assegnato dal sistema.
-          example: 3122
-        stato: 
-          type: string
-          description: Stato attuale dell'atto.
-          example: CONFERMATO
-        datains: 
-          type: string
-          format: date-time
-          description: Data di inserimento a sistema dell'evento.
-          example: '2020-01-23T12:12:20Z'
-        dataultimoagg: 
-          type: string
-          format: date-time
-          description: Data di ultimo aggiornamento dell'evento.
-          example: '2020-01-23T12:12:20Z'
-        dataformazione: 
-          type: string
-          format: date
-          description: Data formazione dell'atto.
-          example: '2020-01-23'
-        ora: 
-          type: string
-          description: Ora formazione atto.
-          example: '1'
-        minuto: 
-          type: string
-          description: Minuto formazione atto.
-          example: '11'        
-        annoAtto: 
-          type: string
-          description: Anno dell'atto.
-          example: '2020'
-        meseAtto: 
-          type: string
-          description: Mese dell'atto.
-          example: '1'
-        giornoAtto: 
-          type: string
-          description: Giorno dell'atto.
-          example: '23'
-        idtipocontenuto: 
-          description: TODO
-          type: string
-          example: ''
-        numeroatto: 
-          type: string
-          description: Numero dell'atto.
-          example: '9423'
-        registro: 
-          type: string
-          description: Registro dell'atto.
-          example: '1'
-        parte: 
-          type: string
-          description: Parte dell'atto.
-          example: '1'
-        tipoRiconoscimento: 
-          type: string
-          description: Tipo riconoscimento.
-          example: '2'
-        serie: 
-          type: string
-          description: Serie dell'atto.
-          example: '1'
-        filiazione: 
-          type: string
-          description: Tipo filiazione.
-          example: '1'
-        tipoDichiarante: 
-          type: string
-          description: Tipo del dichiarante
-          example: 'M'        
-        ausilioInterprete: 
-          type: string
-          description: Indica se è stato necessario l'ausilio di un interprete.
-          example: 'no'
-        conTestimoni: 
-          type: string
-          description: Indica se la dichiarazione è stata resa con testimoni.
-          example: 'no'
-        nomeComuneRegistrazione: 
-          type: string
-          description: Nome del comune presso il quale è stata resa la dichiarazione.
-          example: 'CESENA'
-        siglaProvinciaRegistrazione: 
-          type: string
-          description: Sigla della provincia del comune presso il quale è stata resa la dichiarazoione.
-          example: 'FC'
-        noteRitardo: 
-          type: string
-          description: Note sul ritardo nella dichiarazione
-          example: 'Esempio di note'          
-        motivoAnnullamento: 
-          type: string
-          description: Motivo annullamento atto.
-          example: 'Motivo di annullamento'
-        operatore: 
-          type: string
-          description: Codice fiscale dell'operatore che ha redatto l'atto.
-          example: 'ABCDEF99A11H501A'
-        operatoreNome: 
-          type: string
-          description: Nome dell'operatore che ha redatto l'atto.
-          example: 'MARIO'
-        operatoreCognome: 
-          type: string
-          description: Cognome dell'operatore che ha redatto l'atto.
-          example: 'ROSSI'
-        sceltaCognome: 
-          type: string
-          description: TODO
-          example: ''
-        tipoConsenso: 
-          type: string
-          description: TODO
-          example: ''
-
-        enteDichiarante:
-          description: Ente dichiarante - TODO (Trascrizione?)
-          $ref: '#/components/schemas/ModelEnteDichiarante'
-        allegati: 
-          description: Allegati all'atto
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelAllegatoRif'
-        ufficialeStatoCivile:
-          description: Ufficiale di Stato Civile responsabile dell'atto
-          $ref: '#/components/schemas/ModelSoggetto'
-        soggettoNascita:
-          description: Soggetto in caso di atto di nascita
-          $ref: '#/components/schemas/ModelSoggetto'
-        soggettoMorte:
-          description: Soggetto in caso di atto di morte
-          $ref: '#/components/schemas/ModelSoggetto'
-        madre:
-          description: Soggetto che contiene i dati della madre
-          $ref: '#/components/schemas/ModelSoggetto'
-        padre:
-          description: Soggetto che contiene i dati del padre
-          $ref: '#/components/schemas/ModelSoggetto'
-        dichiarante:
-          description: Soggetto che contiene i dati del dichiarante
-          $ref: '#/components/schemas/ModelSoggetto'
-        testimone1:
-          description: Soggetto che contiene i dati dell'eventuale primo testimone
-          $ref: '#/components/schemas/ModelSoggetto'         
-        testimone2:
-          description: Soggetto che contiene i dati dell'eventuale secondo testimone
-          $ref: '#/components/schemas/ModelSoggetto'          
-        interprete:
-          description: Soggetto che contiene i dati dell'eventuale interprete
-          $ref: '#/components/schemas/ModelSoggetto'          
-        riconoscimentoMadre:
-          description: Atto di riconoscimento da parte della madre
-          $ref: '#/components/schemas/ModelAttoCollegato'
-        riconoscimentoPadre:
-          description: Atto di riconoscimento da parte del padre
-          $ref: '#/components/schemas/ModelAttoCollegato'
-        consenso:
-          description: Atto di consenso
-          $ref: '#/components/schemas/ModelAttoCollegato'
-        consensoMadre:
-          description: Atto di consenso da parte della madre
-          $ref: '#/components/schemas/ModelAttoCollegato'
-        consensoPadre:
-          description: Atto di consenso da parte del padre
-          $ref: '#/components/schemas/ModelAttoCollegato'          
-        tribunale:
-          description: Eventuale atto del tribunale
-          $ref: '#/components/schemas/ModelAttoCollegato'          
-        gemelliPrecedenti: 
-          description: Atto relativo ai gemelli precedenti
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelAttoCollegato'
-        gemelliSuccessivi: 
-          description: Atto relativo ai gemelli successivi
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelAttoCollegato'
-        eventoCollegato:
-          description: Eventuale evento collegato
-          $ref: '#/components/schemas/ModelAttoCollegato'
-        comunicazione: 
-          description: Eventuali comunicazioni associate all'atto
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelComunicazione'
-        annotazioni: 
-          description: Eventuali annotazioni dell'atto
-          type: array
-          items:
-            type: string
-
-    ModelAttoCollegato:
+    SampleResult:
       properties:
         id: 
           type: string
-          description: Identificativo dell'atto collegato.
-          example: ''
-        nomeComuneRegistrazione: 
-          type: string
-          description: Nome del comune in cui è stato registrato l'atto.
-          example: 'TORCHIAROLO'
-        siglaProvinciaRegistrazione: 
-          type: string
-          description: Sigla della provincia in cui è stato registrato l'atto.
-          example: 'BR'
-        ente: 
-          type: string
-          description: Ente che ha redatto l'atto.
-          example: 'tribunale'
-        idtipocontenuto: 
-          type: string
-          description: Identificativo di decodifica per il contenuto dell'atto.
-          example: '1'
-        annoAtto: 
-          type: string
-          description: Anno in cui è stato redatto l'atto.
-          example: '2020'
-        dataAtto: 
-          type: string
-          description: Data dell'atto
-          example: '2020-02-28'
-        tipologia: 
-          type: string
-          description: Tipologia dell'atto collegato.
-          example: 'Nascita'
-        estremi: 
-          type: string
-          description: Sono i dati di registrazione dell'atto (parte, registro e serie) concatenati in una stringa
-          example: '1 1 1'
-    ModelSoggetto:
-      properties:
-        id: 
-          type: string
-          description: Identificativo del soggetto
-          example: '7203'
-        siglaProvinciaResidenza: 
-          type: string
-          description: Sigla della provincia di Residenza
-          example: 'RM'
-        descrizionestatocivile: 
-          type: string
-          description: Descrizione dello stato civile
-          example: 'Coniugato/a'
-        documentoRiconoscimento:
-          description: Descrizione del documento di Riconoscimento
-          $ref: '#/components/schemas/ModelDocumentoRiconoscimento'
-        note: 
-          type: string
-          description: TODO
-          example: ''
-        nome: 
-          type: string
-          description: Nome
-          example: 'UNO'
-        sesso: 
-          type: string
-          description: Sesso
-          example: 'f'
-        siglaProvinciaNascita: 
-          type: string
-          description: Sigla della provincia di Nascita
-          example: 'RM'
-        nomeStatoNascita: 
-          type: string
-          description: Nome dello Stato di Nascita
-          example: 'ITALIA'
-        descrizioneSesso: 
-          type: string
-          description: descrizione del sesso
-          example: 'femminile'
-        nomeStatoResidenza: 
-          type: string
-          description: Nome dello Stato di Residenza
-          example: 'ITALIA'
-        datiDichiarante:
-          $ref: '#/components/schemas/ModelDatiDichiarante'
-        nomeComuneResidenza: 
-          type: string
-          description: descrizione del Comune di Residenza
-          example: 'AFFILE'
-        tipoImpedimento: 
-          type: string
-          description: TODO
-          example: ''
-        nomeComuneNascita: 
-          type: string
-          description: descrizione del Comune di Nascita
-          example: 'ROMA'
-        idsoggettoanpr: 
-          type: string
-          description: identificativo del soggetto in ANPR (Anagrafica)
           example: '1234'
-        idsoggetto: 
+          description: 'Id of the sample'
+        sampleTest: 
           type: string
-          description: identificativo nello stato del soggetto in ANSC (Stato Civile)
-          example: ''
-        datiRinvenuto:
-          $ref: '#/components/schemas/ModelDatiRinvenuto'
-        datiDiMorte:
-          $ref: '#/components/schemas/ModelDatiDiMorte'
-        genere: 
-          type: string
-          description: descrizione del genere
-          example: 'a'
-        datiDiNascita:
-          $ref: '#/components/schemas/ModelDatiDiNascita'
-        codiceFiscale: 
-          type: string
-          description: codice fiscale
-          example: 'PNUFDN87C13F103O'
-        nazionalita: 
-          type: string
-          description: Nazionalita
-          example: 'ITALIANA'
-        cognome: 
-          type: string
-          description: Cognome
-          example: 'CognomeNato'
-        datanascita: 
-          type: string
-          description: Data Di Nascita
-          example: '2020-01-01'
-    ModelEnteDichiarante:
+          example: 'Sample text'
+          description: 'Sample properties'
+        sampleLevelTwoA:
+          $ref: '#/components/schemas/SampleLevelTwoA'
+        sampleLevelTwoB:
+          $ref: '#/components/schemas/SampleLevelTwoB'
+        sampleLevelTwoC:
+          $ref: '#/components/schemas/SampleLevelTwoC'
+        sampleLevelTwoD:
+          $ref: '#/components/schemas/SampleLevelTwoD'
+        sampleLevelTwoE:
+          $ref: '#/components/schemas/SampleLevelTwoE'
+    SampleLevelTwoA:
       properties:
-        dataTrascrizione: 
-          type: string
-          description: Data in cui è avvenuta la trascrizione.
-          example: '2020-01-08'
-        annoTrascrizione: 
-          type: string
-          description: Anno in cui è avvenuta la trascrizione.
-          example: '2020'
-        giornoTrascrizione: 
-          type: string
-          description: Giorno in cui è avvenuta la trascrizione.
-          example: '08'
-        meseTrascrizione: 
-          type: string
-          description: Mese in cui è avvenuta la trascrizione.
-          example: '01'
-        tipologiaTrascrizione: 
-          type: string
-          description: Tipologia di trascrizione effettuata.
-          example: 'Divorzio'
-        estremiDocumento: 
-          type: string
-          description: Codice identificativo del documento. TODO ??
-          example: 'A1342'
-        ruoloEnteDichiarante: 
-          type: string
-          description: Ruolo dell'ente dichiarante.
-          example: 'tribunale'
-        nomeComuneEnte: 
-          type: string
-          description: Nome del comune dell'ente dichiarante.
-          example: 'TORCHIAROLO'
-        siglaProvinciaEnte: 
-          type: string
-          description: Sigla della provincia dell'ente dichiarante.
-          example: 'BR'
-        nomeEnte: 
-          type: string
-          description: Nome dell'ente dichiarante.
-          example: 'tribunale'
-        indirizzoEnte: 
-          type: string
-          description: Indirizzo dell'ente dichiarante.
-          example: 'Via aa'
-    ModelComunicazione:
-      properties:
-        id: 
-          type: string
-          description: Identificativo della comunicazione.
-          example: '7791'
-        idtipocomunicazione: 
-          type: string
-          description: Identificativo di decodifica del tipo comunicazione.
-          example: '1'
-        datapredisposizione: 
-          type: string
-          description: TODO 
-          example: '2020-01-10'
-        formatodocumento:
-          type: string
-          description: TODO
-          example: ''
-        identedestinatario: 
-          type: string
-          description: Identificativo dell'ente a cui è destinata la comunicazione.
-          example: '8165'
-        comuneRegistrazione: 
-          type: string
-          description: Comune in cui è stata registrata la comunicazione.
-          example: 'CESENA'
-        idtipocontenuto: 
-          type: string
-          description: Tipologia di evento (Atto, annotazione, trascrizione)
-          example: '1'
-        datains: 
-          type: string
-          description: Data e ora dell'inserimento della comunicazione.
-          example: '2020-01-10 09:55:55'
-        dataultimoagg: 
-          type: string
-          description: Data e ora in cui è stata aggiornata l'ultima volta la comunicazione.
-          example: '2020-01-10 09:55:55'
-        descrizione: 
-          type: string
-          description: Descrizione della comunicazione.
-          example: 'Avviso'
-        idevento: 
-          type: string
-          description: Identificativo dell'evento a cui è associata la comunicazione.
-          example: '7763'
-        protocollo: 
-          type: string
-          description: Numero di protocollo della comunicazione.
-          example: 'A432354'
-        documento: 
-          type: string
-          description: TODO
-          example: ''
-        nomedocumento: 
-          type: string
-          description: TODO
-          example: ''
-        dataricezione: 
-          type: string
-          description: Data di ricezione della comunicazione.
-          example: '2020-01-10'
-        idstato: 
-          type: string
-          description: Identificativo per la decodifica dello stato della comunicazione.
-          example: '1'
-        soggettoAtto: 
-          type: string
-          description: TODO
-          example: ''
-    SectionConfig:
-      properties:
-        key: 
-          type: string
-          example: ''
-        id: 
-          type: string
-          example: ''
-    ModelAllegatoRif:
-      properties:
-        id: 
-          type: string
-          description: Identificativo dell'allegato.
-          example: '7762' 
-        hashAllegato: 
-          type: string
-          description: Hash Code dell'allegato.
-          example: '9424937f3ff137865b01952e25ba8794'
-        descrizione: 
-          type: string
-          description: Tipo di documento allegato.
-          example: 'DICHIARAZIONE DI NASCITA'
-    ModelDatiDiNascita:
-      properties:
-        luogoFiliazione: 
-          type: string
-          description: Luogo in cui è avvenuto l'evento Nascita.
-          example: 'Ospedale'
-        partoGemellare: 
-          type: string
-          description: 'Valore per identificare se si tratta di un parto gemellare - Valori: SI/NO.'
-          example: 'no'
-        progressivoGemello: 
-          type: string
-          description: Identificativo numerico del gemello.
-          example: '1'
-        annoNascita: 
-          type: string
-          description: Anno in cui è avvenuto l'evento Nascita.
-          example: '2010'
-        giornoNascita: 
-          type: string
-          description: Giorno in cui è avvenuto l'evento Nascita.
-          example: '26'
-        oraNascita: 
-          type: string
-          description: Ora in cui è avvenuto l'evento Nascita.
-          example: '03'
-        natoMorto: 
-          type: string
-          description: 'Valore per identificare se il neonato è nato morto - Valori: SI/NO.'
-          example: 'no'
-        minutoNascita: 
-          type: string
-          description: Minuto in cui è avvenuto l'evento Nascita.
-          example: '23'
-        meseNascita: 
-          type: string
-          description: Mese in cui è avvenuto l'evento Nascita.
-          example: '02'
-        numeroGemelli: 
-          type: string
-          description: Velore per identificare il numero totale dei gemelli nati.
-          example: '2'
-    ModelDocumentoRiconoscimento:
-      properties:
-        numeroDocumento: 
-          type: string
-          description: Numero identificativo del documento di riconoscimento.
-          example: 'AB32652AO'
-        tipologiaDocumento: 
-          type: string
-          description: Tipologia di documento utilizzato per il riconoscimento.
-          example: "Carta d'identità"
-        dataScadenza: 
-          type: string
-          description: Data di scadenza del documento.
-          example: '2020-01-08'
-        rilasciatoDa: 
-          type: string
-          description: Informazione sull'ente che ha rilasciato il documento di riconoscimento.
-          example: 'Comune di Cesena'
-        dataRilascio: 
-          type: string
-          description: Data di rilascio del dcoumento di riconoscimento.
-          example: '2017-01-08'
-    ModelDatiRinvenuto:
-      properties:
-        minutoRinvenimento: 
-          type: string
-          description: Minuto in cui è avvenuto il rinvenimento.
-          example: '35'
-        responsabileAffido: 
-          type: string
-          description: Responsabile dell'ente a cui viene affidato il rinvenuto.
-          example: 'Mario Rossi'
-        giornoRinvenimento: 
-          type: string
-          description: Giorno in cui è avvenuto il rinvenimento.
-          example: '08'
-        luogoRinvenimento: 
-          type: string
-          description: Luogo in cui è avvenuto il rinvenimento.
-          example: 'Casa'
-        oraRinvenimento: 
-          type: string
-          description: Ora in cui è avvenuto il rinvenimento.
-          example: '18'
-        responsabileRinvenimento: 
-          type: string
-          description: Figura responsabile del rinvenimento.
-          example: 'Responsabile Ambulanza' 
         note: 
           type: string
-          description: Note relative al rinvenimento. 
-          example: '' 
-        enteAffido: 
-          type: string
-          description: Ente a cui viene affidato il rinvenuto.
-          example: 'Mortuaria Ospedale'
-        etaPresunta: 
-          type: string
-          description: Eta presunta del rinvenuto.
-          example: '78'
-    ModelDatiDichiarante:
+          example: 'Level two notes A'
+          description: 'Level two description'
+    SampleLevelTwoB:
       properties:
-        ruolo: 
+        note: 
           type: string
-          example: ''
-        procura: 
-          type: string
-          example: ''
-    ModelDatiDiMorte:
+          example: 'Level two notes B'
+          description: 'Level two description'
+    SampleLevelTwoC:
       properties:
-        indirizzoMorte: 
+        note: 
           type: string
-          description: Indirizzo del decesso.
-          example: 'Via Cattaneo, 15'
-        siglaProvinciaMorte: 
+          example: 'Level two notes C'
+          description: 'Level two description'
+          deprecated: true
+        description: 
           type: string
-          description: Sigla della provincia del decesso.
-          example: 'FC'
-        nomeStatoMorte: 
+          example: 'Level two description C'
+          description: 'Level two description'
+    SampleLevelTwoD:
+      properties:
+        note: 
           type: string
-          description: Nazione in cui è avvebuto il decesso.
-          example: 'ITALIA'
-        nomeComuneMorte: 
+          example: 'Level two notes D'
+          description: 'Level two description'
+    SampleLevelTwoE:
+      properties:
+        note: 
           type: string
-          description: Nome del comune in cui è avvenuto il decesso.
-          example: 'CESENA'
-        minutoMorte: 
-          type: string
-          description: Minuto in cui è avvenuto il decesso.
-          example: '17'
-        meseMorte: 
-          type: string
-          description: Mese in cui è avvenuto il decesso.
-          example: '01'
-        dataMorte: 
-          type: string
-          description: Data del decesso.
-          example: '2020-01-08'
-        luogoMorte: 
-          type: string
-          description: Luogo in cui è avvenuto il decesso.
-          example: 'Casa'
-        oraMorte: 
-          type: string
-          description: Ora in cui è avvenuto il decesso.
-          example: '11'
-        giornoMorte: 
-          type: string
-          description: Giorno in cui è avvenuto il decesso.
-          example: '08'
-        annoMorte: 
-          type: string
-          description: Anno in cui è avvenuto il decesso.
-          example: '2020'
+          example: 'Level two notes E'
+          description: 'Level two description'
+          

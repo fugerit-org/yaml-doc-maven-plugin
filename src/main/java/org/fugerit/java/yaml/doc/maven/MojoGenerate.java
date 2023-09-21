@@ -8,14 +8,16 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.fugerit.java.yaml.doc.YamlDocMain;
 
+import lombok.Setter;
+
 @Mojo( name = "generate")
 public class MojoGenerate extends AbstractMojo {
 	
     @Parameter(property = "configPath", required = true )
-    private String configPath;
+    @Setter private String configPath;
     
     @Parameter(property = "idCatalog", required = true )
-    private String idCatalog;
+    @Setter private String idCatalog;
     
     public void execute() throws MojoExecutionException {
         try {

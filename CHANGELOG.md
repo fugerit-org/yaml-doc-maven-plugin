@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+## [0.7.0] - 2023-10-09
+
+- yaml-doc-tool version to 0.7.0
+
 ## [0.6.1] - 2023-10-07
 
 ### Changed

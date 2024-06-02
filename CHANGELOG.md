@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2024-06-02
+
 ### Changed
 
-- fj-bom set to 1.6.1
+- yaml-doc-tool version to 1.0.1
+- fj-bom set to 1.6.5
 - review workflows
 - Upgraded build_maven_package workflow to version 1.0.1, (accespt DISABLE_MAVEN_DEPENDENCY_SUBMISSION)
 

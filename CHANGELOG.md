@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- yaml-doc-tool version to 1.0.2
 - fj-bom set to 1.6.7
 
 ## [1.0.1] - 2024-06-02

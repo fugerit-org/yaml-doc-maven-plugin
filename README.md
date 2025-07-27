@@ -1,5 +1,7 @@
 # yaml-doc-maven-plugin
 
+> ⚠️ **Warning:** As of 2025-07-27 this repository is archived and substituted by [openapi-doc-maven-plugin](https://github.com/fugerit-org/openapi-doc-maven-plugin) (see [fugerit-org/openapi-doc-tool#1](https://github.com/fugerit-org/openapi-doc-tool/issues/1)).
+
 Simple maven plugin for [yaml-doc-tool](https://github.com/fugerit-org/yaml-doc-tool) project.
 
 [![Keep a Changelog v1.1.0 badge](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.1.0-%23E05735)](CHANGELOG.md) 
